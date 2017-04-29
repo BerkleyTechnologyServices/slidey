@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+        <title>Slidey</title>
+
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body ng-app="app" ng-controller="AppController as $ctrl">
+        This is a test outside
+        <button ng-click="$ctrl.toggle('pageOpened')">Toggle Aside</button>
+        <bts-slidey class="page-slidey" opened="$ctrl.pageOpened" on-close="$ctrl.closed()" on-close-finished="$ctrl.closeFinished()">
+            This is an aside
+            <button ng-click="$ctrl.toggle('nestedPageOpened')">Toggle Nested</button>
+            <bts-slidey opened="$ctrl.nestedPageOpened">
+                This is a nested aside
+            </bts-slidey>
+        </bts-slidey>
+
+        <div id="modal" class="modal-demo">
+            <button ng-click="$ctrl.toggle('modalOpened')">Toggle Aside</button>
+            <bts-slidey class="modal-slidey" reflow-container="modal" opened="$ctrl.modalOpened" on-close="$ctrl.closed()" on-close-finished="$ctrl.closeFinished()">
+                <button ng-click="$ctrl.toggle('nestedModalOpened')">Toggle Nested</button>
+                <div>This is an aside</div>
+                <div>This is the bottom of the aside</div>
+                <bts-slidey class="modal-nested-slidey" opened="$ctrl.nestedModalOpened">
+                    <button ng-click="$ctrl.toggle('superNestedModalOpened')">Toggle Nested</button>
+                    <div>This is an aside</div>
+                    <bts-slidey class="modal-super-nested-slidey" opened="$ctrl.superNestedModalOpened">
+                        <div>This is an aside</div>
+                        <div>This is the bottom of the aside</div>
+                    </bts-slidey>
+                </bts-slidey>
+            </bts-slidey>
+        </div>
+
+        <script src="slidey.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
