@@ -1,0 +1,30 @@
+language: node_js
+node_js: stable
+dist: trusty
+sudo: required
+cache:
+  directories:
+    - node_modules
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+addons:
+  firefox: latest
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+before_script:
+  - npm prune
+script:
+  - npm run lint
+  - 'if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then xvfb-run npm run test:sauce; fi'
+  - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then npm run test:sauce; fi'
+  - npm run test
+after_success:
+  - npm run report-coverage
+  - npm run semantic-release
+notifications:
+  email: change
