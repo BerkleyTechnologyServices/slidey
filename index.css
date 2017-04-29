@@ -1,0 +1,37 @@
+html {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page-slidey > .slidey-content-wrapper > .slidey-content > * {
+  height: 1000px;
+}
+
+.modal-demo {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+  transition-property: height;
+  background: #fafafa;
+  height: 50%;
+  max-height: 90%;
+  width: 75%;
+  border: darkgray 1px solid;
+  border-radius: 5px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.modal-slidey > .slidey-content-wrapper > .slidey-content > div:first-of-type {
+  height: 1000px;
+}
+
+.modal-nested-slidey > .slidey-content-wrapper > .slidey-content > * {
+  height: 200px;
+}
+
+.modal-super-nested-slidey > .slidey-content-wrapper > .slidey-content > * {
+  height: 1000px;
+}

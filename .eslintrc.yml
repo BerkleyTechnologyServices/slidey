@@ -1,0 +1,21 @@
+extends: google
+globals:
+  angular: true
+parserOptions:
+  sourceType: module
+rules:
+  comma-dangle:
+    - error
+    - arrays: never
+      objects: never
+      imports: never
+      exports: never
+      functions: never
+  max-nested-callbacks: 0
+  no-warning-comments: 0
+  require-jsdoc: 0
+  camelcase: 0
+  max-len: 0
+  object-curly-spacing: 0
+  one-var: 0
+  arrow-parens: 0

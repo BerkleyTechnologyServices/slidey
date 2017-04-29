@@ -1,0 +1,23 @@
+sudo: false
+language: node_js
+node_js: node
+cache:
+  directories:
+    - node_modules
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+addons:
+  sauce_connect: true
+before_script:
+  - npm prune
+script:
+  - npm run lint
+  - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then npm run test:sauce; fi'
+  - npm run test
+after_success:
+  - npm run report-coverage
+  # - npm run semantic-release
+notifications:
+  email: change
