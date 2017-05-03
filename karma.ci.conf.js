@@ -41,7 +41,7 @@ module.exports = function(config) {
     }
   };
 
-  config.set({
+  const karmaConfig = {
     basePath: '',
 
     frameworks: [
@@ -63,7 +63,7 @@ module.exports = function(config) {
       noInfo: true
     },
 
-    reporters: ['mocha', 'saucelabs'],
+    reporters: ['mocha'],
 
     port: 9876,
 
@@ -74,15 +74,24 @@ module.exports = function(config) {
     sauceLabs: {
       testName: 'BerkleyTechnologyServices/slidey',
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
-      startConnect: false
+      startConnect: true
     },
-
-    customLaunchers: customLaunchers,
-    browsers: Object.keys(customLaunchers),
 
     captureTimeout: 0,
     browserNoActivityTimeout: 120000,
 
     singleRun: true
-  });
+  };
+
+  // https://github.com/travis-ci/travis-ci/issues/1946
+  // TODO: Switch to SauceLabs purely once Encrypted Variables in PRs are supported
+  if (process.env.TRAVIS_PULL_REQUEST === 'false') {
+    karmaConfig.customLaunchers = customLaunchers;
+    karmaConfig.browsers = Object.keys(customLaunchers);
+    karmaConfig.reporters.push('saucelabs');
+  } else {
+    karmaConfig.browsers = ['Chrome', 'Firefox'];
+  }
+
+  config.set(karmaConfig);
 };
