@@ -1,8 +1,8 @@
-slidey {
+bts-slidey {
   pointer-events: none;
 }
 
-slidey.opened {
+bts-slidey.opened {
   pointer-events: auto;
 }
 
@@ -20,7 +20,7 @@ slidey.opened {
   z-index: 9999;
 }
 
-slidey.opened > .slidey-overlay {
+bts-slidey.opened > .slidey-overlay {
   opacity: 0.15;
 }
 
@@ -40,11 +40,11 @@ slidey.opened > .slidey-overlay {
   z-index: 9999;
 }
 
-slidey.opened > .slidey-content-wrapper {
+bts-slidey.opened > .slidey-content-wrapper {
   transform: translateX(0%);
   box-shadow: 0 8px 8px rgba(0,0,0,0.5);
 }
 
-slidey.nested > .slidey-content-wrapper {
+bts-slidey.nested > .slidey-content-wrapper {
   overflow-y: hidden;
 }

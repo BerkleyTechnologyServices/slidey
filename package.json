@@ -1,6 +1,6 @@
 {
   "name": "@bts/slidey",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/slidey.min.js",
   "description": "Fit more content onto your pages by nesting slideys indefinitely!",
   "homepage": "https://github.com/BerkleyTechnologyServices/slidey",

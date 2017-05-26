@@ -1,5 +1,5 @@
 /**
- * @bts/slidey JavaScript Library v1.0.0
+ * @bts/slidey JavaScript Library v1.0.1
  *
  * @license Apache 2.0 (https://github.com/BerkleyTechnologyServices/slidey/blob/master/LICENSE)
  *
@@ -85,7 +85,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/* no static exports found */
+/* unknown exports provided */
 /* all exports used */
 /*!*****************************!*\
   !*** ./slidey.component.js ***!
@@ -97,7 +97,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 /* 1 */
-/* no static exports found */
+/* unknown exports provided */
 /* all exports used */
 /*!**************************!*\
   !*** ./slidey.config.js ***!
@@ -109,7 +109,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 /* 2 */
-/* no static exports found */
+/* unknown exports provided */
 /* all exports used */
 /*!**************************!*\
   !*** external "angular" ***!
@@ -120,7 +120,7 @@ eval("module.exports = __WEBPACK_EXTERNAL_MODULE_2__;//# sourceMappingURL=data:a
 
 /***/ }),
 /* 3 */
-/* no static exports found */
+/* unknown exports provided */
 /* all exports used */
 /*!******************************!*\
   !*** ./slidey.controller.js ***!
@@ -132,7 +132,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 /* 4 */
-/* no static exports found */
+/* unknown exports provided */
 /* all exports used */
 /*!**************************!*\
   !*** ./slidey.module.js ***!
@@ -144,7 +144,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 /* 5 */
-/* no static exports found */
+/* unknown exports provided */
 /* all exports used */
 /*!*********************!*\
   !*** ./slidey.html ***!
@@ -155,14 +155,14 @@ eval("module.exports = \"<div class=\\\"slidey-overlay\\\" ng-click=\\\"$ctrl.cl
 
 /***/ }),
 /* 6 */
-/* no static exports found */
+/* unknown exports provided */
 /* all exports used */
 /*!********************!*\
   !*** ./slidey.css ***!
   \********************/
 /***/ (function(module, exports) {
 
-eval("module.exports = \"slidey {\\n  pointer-events: none;\\n}\\n\\nslidey.opened {\\n  pointer-events: auto;\\n}\\n\\n/* Overlay */\\n\\n.slidey-overlay {\\n  position: absolute;\\n  top: 0;\\n  right: 0;\\n  left: 0;\\n  bottom: 0;\\n  background-color: black;\\n  transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 0.5s;\\n  opacity: 0;\\n  z-index: 9999;\\n}\\n\\nslidey.opened > .slidey-overlay {\\n  opacity: 0.15;\\n}\\n\\n/* Content */\\n\\n.slidey-content-wrapper {\\n  position: absolute;\\n  top: 0;\\n  right: 0;\\n  bottom: 0;\\n  background-color: white;\\n  transform: translateX(100%);\\n  transition: cubic-bezier(0.4, 0, 0.2, 1) 0.5s;\\n  transition-property: transform, width, box-shadow;\\n  overflow-y: auto;\\n  overflow-x: hidden;\\n  z-index: 9999;\\n}\\n\\nslidey.opened > .slidey-content-wrapper {\\n  transform: translateX(0%);\\n  box-shadow: 0 8px 8px rgba(0,0,0,0.5);\\n}\\n\\nslidey.nested > .slidey-content-wrapper {\\n  overflow-y: hidden;\\n}\\n\"//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNi5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NsaWRleS5jc3M/MzNkMyJdLCJzb3VyY2VzQ29udGVudCI6WyJtb2R1bGUuZXhwb3J0cyA9IFwic2xpZGV5IHtcXG4gIHBvaW50ZXItZXZlbnRzOiBub25lO1xcbn1cXG5cXG5zbGlkZXkub3BlbmVkIHtcXG4gIHBvaW50ZXItZXZlbnRzOiBhdXRvO1xcbn1cXG5cXG4vKiBPdmVybGF5ICovXFxuXFxuLnNsaWRleS1vdmVybGF5IHtcXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcXG4gIHRvcDogMDtcXG4gIHJpZ2h0OiAwO1xcbiAgbGVmdDogMDtcXG4gIGJvdHRvbTogMDtcXG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xcbiAgdHJhbnNpdGlvbjogb3BhY2l0eSBjdWJpYy1iZXppZXIoMC40LCAwLCAwLjIsIDEpIDAuNXM7XFxuICBvcGFjaXR5OiAwO1xcbiAgei1pbmRleDogOTk5OTtcXG59XFxuXFxuc2xpZGV5Lm9wZW5lZCA+IC5zbGlkZXktb3ZlcmxheSB7XFxuICBvcGFjaXR5OiAwLjE1O1xcbn1cXG5cXG4vKiBDb250ZW50ICovXFxuXFxuLnNsaWRleS1jb250ZW50LXdyYXBwZXIge1xcbiAgcG9zaXRpb246IGFic29sdXRlO1xcbiAgdG9wOiAwO1xcbiAgcmlnaHQ6IDA7XFxuICBib3R0b206IDA7XFxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcXG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgxMDAlKTtcXG4gIHRyYW5zaXRpb246IGN1YmljLWJlemllcigwLjQsIDAsIDAuMiwgMSkgMC41cztcXG4gIHRyYW5zaXRpb24tcHJvcGVydHk6IHRyYW5zZm9ybSwgd2lkdGgsIGJveC1zaGFkb3c7XFxuICBvdmVyZmxvdy15OiBhdXRvO1xcbiAgb3ZlcmZsb3cteDogaGlkZGVuO1xcbiAgei1pbmRleDogOTk5OTtcXG59XFxuXFxuc2xpZGV5Lm9wZW5lZCA+IC5zbGlkZXktY29udGVudC13cmFwcGVyIHtcXG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgwJSk7XFxuICBib3gtc2hhZG93OiAwIDhweCA4cHggcmdiYSgwLDAsMCwwLjUpO1xcbn1cXG5cXG5zbGlkZXkubmVzdGVkID4gLnNsaWRleS1jb250ZW50LXdyYXBwZXIge1xcbiAgb3ZlcmZsb3cteTogaGlkZGVuO1xcbn1cXG5cIlxuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIC4vc2xpZGV5LmNzc1xuLy8gbW9kdWxlIGlkID0gNlxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBIiwic291cmNlUm9vdCI6IiJ9");
+eval("module.exports = \"bts-slidey {\\n  pointer-events: none;\\n}\\n\\nbts-slidey.opened {\\n  pointer-events: auto;\\n}\\n\\n/* Overlay */\\n\\n.slidey-overlay {\\n  position: absolute;\\n  top: 0;\\n  right: 0;\\n  left: 0;\\n  bottom: 0;\\n  background-color: black;\\n  transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 0.5s;\\n  opacity: 0;\\n  z-index: 9999;\\n}\\n\\nbts-slidey.opened > .slidey-overlay {\\n  opacity: 0.15;\\n}\\n\\n/* Content */\\n\\n.slidey-content-wrapper {\\n  position: absolute;\\n  top: 0;\\n  right: 0;\\n  bottom: 0;\\n  background-color: white;\\n  transform: translateX(100%);\\n  transition: cubic-bezier(0.4, 0, 0.2, 1) 0.5s;\\n  transition-property: transform, width, box-shadow;\\n  overflow-y: auto;\\n  overflow-x: hidden;\\n  z-index: 9999;\\n}\\n\\nbts-slidey.opened > .slidey-content-wrapper {\\n  transform: translateX(0%);\\n  box-shadow: 0 8px 8px rgba(0,0,0,0.5);\\n}\\n\\nbts-slidey.nested > .slidey-content-wrapper {\\n  overflow-y: hidden;\\n}\\n\"//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiNi5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NsaWRleS5jc3M/MzNkMyJdLCJzb3VyY2VzQ29udGVudCI6WyJtb2R1bGUuZXhwb3J0cyA9IFwiYnRzLXNsaWRleSB7XFxuICBwb2ludGVyLWV2ZW50czogbm9uZTtcXG59XFxuXFxuYnRzLXNsaWRleS5vcGVuZWQge1xcbiAgcG9pbnRlci1ldmVudHM6IGF1dG87XFxufVxcblxcbi8qIE92ZXJsYXkgKi9cXG5cXG4uc2xpZGV5LW92ZXJsYXkge1xcbiAgcG9zaXRpb246IGFic29sdXRlO1xcbiAgdG9wOiAwO1xcbiAgcmlnaHQ6IDA7XFxuICBsZWZ0OiAwO1xcbiAgYm90dG9tOiAwO1xcbiAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XFxuICB0cmFuc2l0aW9uOiBvcGFjaXR5IGN1YmljLWJlemllcigwLjQsIDAsIDAuMiwgMSkgMC41cztcXG4gIG9wYWNpdHk6IDA7XFxuICB6LWluZGV4OiA5OTk5O1xcbn1cXG5cXG5idHMtc2xpZGV5Lm9wZW5lZCA+IC5zbGlkZXktb3ZlcmxheSB7XFxuICBvcGFjaXR5OiAwLjE1O1xcbn1cXG5cXG4vKiBDb250ZW50ICovXFxuXFxuLnNsaWRleS1jb250ZW50LXdyYXBwZXIge1xcbiAgcG9zaXRpb246IGFic29sdXRlO1xcbiAgdG9wOiAwO1xcbiAgcmlnaHQ6IDA7XFxuICBib3R0b206IDA7XFxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcXG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgxMDAlKTtcXG4gIHRyYW5zaXRpb246IGN1YmljLWJlemllcigwLjQsIDAsIDAuMiwgMSkgMC41cztcXG4gIHRyYW5zaXRpb24tcHJvcGVydHk6IHRyYW5zZm9ybSwgd2lkdGgsIGJveC1zaGFkb3c7XFxuICBvdmVyZmxvdy15OiBhdXRvO1xcbiAgb3ZlcmZsb3cteDogaGlkZGVuO1xcbiAgei1pbmRleDogOTk5OTtcXG59XFxuXFxuYnRzLXNsaWRleS5vcGVuZWQgPiAuc2xpZGV5LWNvbnRlbnQtd3JhcHBlciB7XFxuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMCUpO1xcbiAgYm94LXNoYWRvdzogMCA4cHggOHB4IHJnYmEoMCwwLDAsMC41KTtcXG59XFxuXFxuYnRzLXNsaWRleS5uZXN0ZWQgPiAuc2xpZGV5LWNvbnRlbnQtd3JhcHBlciB7XFxuICBvdmVyZmxvdy15OiBoaWRkZW47XFxufVxcblwiXG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9zbGlkZXkuY3NzXG4vLyBtb2R1bGUgaWQgPSA2XG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJtYXBwaW5ncyI6IkFBQUEiLCJzb3VyY2VSb290IjoiIn0=");
 
 /***/ })
 /******/ ]);
