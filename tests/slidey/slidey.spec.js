@@ -247,7 +247,7 @@ describe('component(slidey)', () => {
   });
 
   describe('binding(reflowContainer)', () => {
-    let modal, styles;
+    let modal, styles, $compile;
     before(() => {
       styles = document.createElement('style');
       styles.appendChild(document.createTextNode(`
@@ -262,7 +262,8 @@ describe('component(slidey)', () => {
       document.head.removeChild(styles);
     });
 
-    beforeEach(angular.mock.inject(($compile, $rootScope) => {
+    beforeEach(angular.mock.inject((_$compile_, $rootScope) => {
+      $compile = _$compile_;
       modal = $compile(`
         <div id="modal">
           <div style="height: 400px;">Some Content</div>
@@ -398,6 +399,50 @@ describe('component(slidey)', () => {
       // to wait for the next event loop, setTimeout accomplishes this
       setTimeout(() => {
         expect(controller.containerHeight).to.equal(400);
+        done();
+      });
+    });
+
+    it('should correctly handle table reflows', (done) => {
+      document.body.removeChild(modal);
+      modal = $compile(`
+        <div id="modal" style="position: relative; width: 538px;">
+          <bts-slidey opened="opened" reflow-container="modal">
+            <table>
+              <tbody>
+                <tr>
+                  <td>This is a test</td>
+                  <td>This is a test</td>
+                  <td>This is a test</td>
+                  <td>This is a test</td>
+                  <td>This is a test</td>
+                </tr>
+              </tbody>
+            </table>
+          </bts-slidey>
+        </div>
+      `)(scope);
+      component = modal.find('bts-slidey');
+      modal = modal[0];
+      // HACK(nick-woodward): Because angular doesn't by default utilize the dom for testing.
+      // I have to append it so that I can detect certain properties such as element height.
+      document.body.appendChild(modal);
+      // HACK(nick-woodward): If we don't stub this then angular will have
+      // trouble picking up the element from the DOM.
+      document.getElementById.restore();
+      sinon.stub(document, 'getElementById').withArgs('modal').returns(modal);
+      controller = component.controller('btsSlidey');
+      scope.opened = false;
+      scope.$digest();
+      expect(controller.containerHeight).to.equal(0);
+
+      scope.opened = true;
+      scope.$digest();
+
+      // NOTE: This tests the content MutationObserver, therefore we need
+      // to wait for the next event loop, setTimeout accomplishes this
+      setTimeout(() => {
+        expect(controller.contentHeight).to.equal('26px');
         done();
       });
     });

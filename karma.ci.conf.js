@@ -9,20 +9,24 @@ module.exports = function(config) {
     },
     Chrome: {
       base: 'SauceLabs',
-      browserName: 'chrome'
+      browserName: 'chrome',
+      platform: 'Windows 10'
     },
     Firefox: {
       base: 'SauceLabs',
-      browserName: 'firefox'
+      browserName: 'firefox',
+      platform: 'Windows 10'
     },
     Edge: {
       base: 'SauceLabs',
-      browserName: 'microsoftedge'
+      browserName: 'microsoftedge',
+      platform: 'Windows 10'
     },
     InternetExplorer11: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
-      version: '11'
+      version: '11',
+      platform: 'Windows 7'
     },
     Safari10: {
       base: 'SauceLabs',
@@ -79,7 +83,9 @@ module.exports = function(config) {
     sauceLabs: {
       testName: 'BerkleyTechnologyServices/slidey',
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
-      startConnect: true
+      startConnect: true,
+      recordVideo: true,
+      recordScreenshots: true
     },
 
     captureTimeout: 0,
@@ -90,13 +96,13 @@ module.exports = function(config) {
 
   // https://github.com/travis-ci/travis-ci/issues/1946
   // TODO: Switch to SauceLabs purely once Encrypted Variables in PRs are supported
-  if (process.env.TRAVIS_PULL_REQUEST === 'false') {
+  // if (process.env.TRAVIS_PULL_REQUEST === 'false') {
     karmaConfig.customLaunchers = customLaunchers;
     karmaConfig.browsers = Object.keys(customLaunchers);
     karmaConfig.reporters.push('saucelabs');
-  } else {
-    karmaConfig.browsers = ['Chrome', 'Firefox'];
-  }
+  // } else {
+  //   karmaConfig.browsers = ['Chrome', 'Firefox'];
+  // }
 
   config.set(karmaConfig);
 };

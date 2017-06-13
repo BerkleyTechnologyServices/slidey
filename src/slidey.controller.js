@@ -98,6 +98,8 @@ export default class SlideyController {
       this._contentObserver = new MutationObserver((mutations) => {
         if (!this.opened) return;
 
+        // NOTE: This is to take into account content shift
+        this._container.style.height = this.contentHeight;
         this._container.style.height = this.contentHeight;
       });
       this._contentObserver.observe(this._wrapper, {
@@ -106,6 +108,8 @@ export default class SlideyController {
         attributes: true,
         attributeFilter: ['class', 'style']
       });
+        // NOTE: This is to take into account content shift
+      this._container.style.height = this.contentHeight;
       this._container.style.height = this.contentHeight;
     } else if (this.parentSlidey && this.parentSlidey.opened) {
       // We're closing to a parent slidey, so we should match its height.
