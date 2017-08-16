@@ -38,7 +38,7 @@ Then add a `<script>` to your index.html:
 
 ## Example
 
-[Live Demo](https://jsbin.com/yodaway/edit?html,output)
+[Live Demo](https://jsbin.com/mujosep/2/edit?html,js,output)
 
 ## Usage
 
