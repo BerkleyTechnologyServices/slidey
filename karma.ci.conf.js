@@ -2,6 +2,11 @@ const webpackConfig = require('./webpack.test.config.js');
 
 module.exports = function(config) {
   const customLaunchers = {
+    ChromeBeta: {
+      base: 'SauceLabs',
+      browserName: 'chrome',
+      version: 'beta'
+    },
     Chrome: {
       base: 'SauceLabs',
       browserName: 'chrome'

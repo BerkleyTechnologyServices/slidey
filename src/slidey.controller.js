@@ -45,9 +45,6 @@ export default class SlideyController {
   _onOpenedChanged() {
     if (this.opened) {
       this.$element.addClass('opened');
-      this._overlay.scrollIntoView({
-        behavior: 'smooth'
-      });
     } else {
       this.$element.removeClass('opened');
     }
