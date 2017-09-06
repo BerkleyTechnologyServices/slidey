@@ -24,7 +24,6 @@ before_script:
 script:
   - yarn run lint
   - xvfb-run yarn run test:sauce
-  - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then yarn run test:sauce; fi'
   - yarn run test
 after_script:
   - greenkeeper-lockfile-upload
