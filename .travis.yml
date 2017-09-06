@@ -1,8 +1,9 @@
 language: node_js
 node_js: stable
 dist: trusty
-sudo: required
+sudo: false
 cache:
+  yarn: true
   directories:
     - node_modules
 branches:
@@ -16,15 +17,18 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
+before_install:
+  - yarn global add greenkeeper-lockfile@1
 before_script:
-  - npm prune
+  - greenkeeper-lockfile-update
 script:
-  - npm run lint
-  - 'if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then xvfb-run npm run test:sauce; fi'
-  - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then npm run test:sauce; fi'
-  - npm run test
+  - yarn run lint
+  - xvfb-run yarn run test:sauce
+  - yarn run test
+after_script:
+  - greenkeeper-lockfile-upload
 after_success:
-  - npm run report-coverage
-  - npm run semantic-release
+  - yarn run report-coverage
+  - yarn run semantic-release
 notifications:
   email: change

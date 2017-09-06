@@ -258,6 +258,7 @@ describe('component(slidey)', () => {
               <div style="height: 200px;">Some Content</div>
             </bts-slidey>
           </bts-slidey>
+          <bts-slidey>Test2</bts-slidey>
         </div>
       `)(scope);
       component = modal.find('bts-slidey');
@@ -280,24 +281,46 @@ describe('component(slidey)', () => {
       document.getElementById.restore();
     });
 
+    it('should throw an error if MutationObserver is unavailable', () => {
+      const MutationObserver = window.MutationObserver;
+
+      delete window.MutationObserver;
+
+      try {
+        controller.adjustContainer();
+      } catch (error) {
+        window.MutationObserver = MutationObserver;
+        expect(error.message).to.equal(`Unfortunately, this browser doesn't support the MutationObserver API!`);
+      }
+    });
+
     it('should grow with the slideys', () => {
       scope.opened = true;
       scope.$digest();
 
+      expect(modal.offsetHeight).to.equal(600);
       expect(modal.style.height).to.equal('600px');
     });
 
-    it('should shrink back to the previous slidey', () => {
+    it('should shrink back to the previous slidey', (done) => {
       scope.opened = true;
       scope.nestedOpened = true;
       scope.$digest();
 
+      expect(modal.offsetHeight).to.equal(400);
       expect(modal.style.height).to.equal('400px');
 
-      scope.nestedOpened = false;
-      scope.$digest();
+      // HACK: This is to cause the animation to partially occur
+      setTimeout(() => {
+        expect(window.scrollX).to.not.be.ok;
 
-      expect(modal.style.height).to.equal('600px');
+        scope.nestedOpened = false;
+        scope.$digest();
+
+        expect(modal.offsetHeight).to.equal(600);
+        expect(modal.style.height).to.equal('600px');
+        done();
+      }, 100);
     });
 
     it('should never shrink beyond the container', () => {
@@ -305,6 +328,7 @@ describe('component(slidey)', () => {
       scope.nestedOpened = true;
       scope.$digest();
 
+      expect(modal.offsetHeight).to.equal(400);
       expect(modal.style.height).to.equal('400px');
     });
 
@@ -312,6 +336,7 @@ describe('component(slidey)', () => {
       scope.opened = true;
       scope.$digest();
 
+      expect(modal.offsetHeight).to.equal(600);
       expect(modal.style.height).to.equal('600px');
 
       const newChild = document.createElement('div');
@@ -322,6 +347,7 @@ describe('component(slidey)', () => {
       // NOTE: This tests the content MutationObserver, therefore we need
       // to wait for the next event loop, setTimeout accomplishes this
       setTimeout(() => {
+        expect(modal.offsetHeight).to.equal(800);
         expect(modal.style.height).to.equal('800px');
         done();
       });

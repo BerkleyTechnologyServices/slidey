@@ -38,7 +38,7 @@ Then add a `<script>` to your index.html:
 
 ## Example
 
-[Live Demo](https://jsbin.com/yodaway/edit?html,output)
+[Live Demo](https://jsbin.com/mujosep/2/edit?html,js,output)
 
 ## Usage
 
@@ -141,7 +141,7 @@ Fires off when the closing animation finishes.
 [npm-downloads-image]: http://img.shields.io/npm/dm/@bts/slidey.svg?style=flat
 [npm-url]: https://npmjs.org/package/@bts/slidey
 
-[travis-ci-image]: https://img.shields.io/travis/BerkleyTechnologyServices/slidey.svg?style=flat
+[travis-ci-image]: https://travis-ci.org/BerkleyTechnologyServices/slidey.svg?branch=master
 [travis-ci-url]: https://travis-ci.org/BerkleyTechnologyServices/slidey
 
 [coveralls-image]: https://img.shields.io/coveralls/BerkleyTechnologyServices/slidey/master.svg
