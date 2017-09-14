@@ -102,7 +102,9 @@ export default class SlideyController {
       });
       this._contentObserver.observe(this._wrapper, {
         childList: true,
-        subtree: true
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class', 'style']
       });
       this._container.style.height = this.contentHeight;
     } else if (this.parentSlidey && this.parentSlidey.opened) {
@@ -118,7 +120,9 @@ export default class SlideyController {
       });
       this._containerObserver.observe(this._container, {
         childList: true,
-        subtree: true
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class', 'style']
       });
       this._container.style.height = '';
     }
