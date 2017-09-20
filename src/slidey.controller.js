@@ -108,9 +108,8 @@ export default class SlideyController {
       });
       this._container.style.height = this.contentHeight;
     } else if (this.parentSlidey && this.parentSlidey.opened) {
-      // We're closing to a parent slidey, so we should match its height.
       this._container.style.height = this.parentSlidey.contentHeight;
-    } else {
+    } else if (!this.parentSlidey) {
       // We need to watch the container for changes to cover instances
       // where we have async calls or are waiting for angular to bind
       this._containerObserver = new MutationObserver((mutations) => {

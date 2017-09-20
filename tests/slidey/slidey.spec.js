@@ -270,6 +270,9 @@ describe('component(slidey)', () => {
             <div style="height: 600px;">Some Content</div>
             <bts-slidey opened="nestedOpened">
               <div style="height: 200px;">Some Content</div>
+              <bts-slidey opened="superNestedOpened">
+                <div style="height: 500px;">Some Content</div>
+              </bts-slidey>
             </bts-slidey>
           </bts-slidey>
           <bts-slidey>Test2</bts-slidey>
@@ -286,6 +289,7 @@ describe('component(slidey)', () => {
       controller = component.controller('btsSlidey');
       scope.opened = false;
       scope.nestedOpened = false;
+      scope.superNestedOpened = false;
       scope.reflowContainer = 'modal';
       scope.$digest();
     }));
@@ -450,6 +454,23 @@ describe('component(slidey)', () => {
           done();
         });
       });
+    });
+
+    it('should support closing multiple slideys at once', () => {
+      scope.opened = true;
+      scope.nestedOpened = true;
+      scope.superNestedOpened = true;
+      scope.$digest();
+
+      expect(modal.offsetHeight).to.equal(500);
+      expect(modal.style.height).to.equal('500px');
+
+      scope.nestedOpened = false;
+      scope.superNestedOpened = false;
+      scope.$digest();
+
+      expect(modal.offsetHeight).to.equal(600);
+      expect(modal.style.height).to.equal('600px');
     });
   });
 });
