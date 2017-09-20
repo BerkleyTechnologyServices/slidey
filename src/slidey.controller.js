@@ -80,6 +80,7 @@ export default class SlideyController {
     } else {
       this._wrapper.style.width = this.contentWidth;
       this.$element.removeClass('nested');
+      this.adjustContainer();
     }
   }
 
