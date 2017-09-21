@@ -472,5 +472,34 @@ describe('component(slidey)', () => {
       expect(modal.offsetHeight).to.equal(600);
       expect(modal.style.height).to.equal('600px');
     });
+
+    it('should detect content changes after being nested', (done) => {
+      scope.opened = true;
+      scope.nestedOpened = true;
+      scope.$digest();
+
+      expect(modal.offsetHeight).to.equal(400);
+      expect(modal.style.height).to.equal('400px');
+
+      scope.nestedOpened = false;
+      scope.$digest();
+
+      const newChild = document.createElement('div');
+      newChild.style.height = '200px';
+      controller._content.appendChild(newChild);
+
+      // NOTE: This tests the content MutationObserver, therefore we need
+      // to wait for the next event loop, setTimeout accomplishes this
+      setTimeout(() => {
+        expect(modal.offsetHeight).to.equal(800);
+        expect(modal.style.height).to.equal('800px');
+        newChild.style.height = '400px';
+        setTimeout(() => {
+          expect(modal.offsetHeight).to.equal(1000);
+          expect(modal.style.height).to.equal('1000px');
+          done();
+        });
+      });
+    });
   });
 });
