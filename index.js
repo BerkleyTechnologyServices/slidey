@@ -6,8 +6,7 @@ const module = angular.module('app', [
 
 class AppController {
   constructor() {
-    this.opened = false;
-    this.nestedOpened = false;
+    this.modalOpened = true;
   }
 
   closed() {
