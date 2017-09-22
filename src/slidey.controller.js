@@ -5,8 +5,8 @@ export default class SlideyController {
   }
 
   $onInit() {
-    this.opened = false;
-    this.contentWidth = '80%';
+    this.contentWidth = this.contentWidth || '80%';
+    this.opened = this.opened || false;
     this.$scope.$watch('$ctrl.opened', this._onOpenedChanged.bind(this));
   }
 
@@ -14,11 +14,13 @@ export default class SlideyController {
     this._wrapper = this.$element[0].querySelector('.slidey-content-wrapper');
     this._content = this.$element[0].querySelector('.slidey-content');
     this._overlay = this.$element[0].querySelector('.slidey-overlay');
-    this.setNested(this._nested);
     this._wrapper.addEventListener('transitionend', this._onTransitionEnd.bind(this), {
       passive: true
     });
+    this.setNested(this._nested);
+    this.adjustContainer();
   }
+
 
   $onChanges(changes) {
     if (changes.contentWidth) {
@@ -88,7 +90,7 @@ export default class SlideyController {
     if (!window.MutationObserver) {
       throw new Error('Unfortunately, this browser doesn\'t support the MutationObserver API!');
     }
-    if (!this._container) {
+    if (!this._container || !this._wrapper) {
       return;
     }
     this._containerObserver && this._containerObserver.disconnect();
