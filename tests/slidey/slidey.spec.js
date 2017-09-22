@@ -101,6 +101,30 @@ describe('component(slidey)', () => {
     });
   });
 
+  describe('binding(opened)', () => {
+    beforeEach(angular.mock.inject(($compile, $rootScope) => {
+      scope = $rootScope.$new();
+      scope.opened = true;
+
+      component = $compile(`
+        <bts-slidey
+          opened="opened"
+          content-width="{{contentWidth}}"
+          on-close="closed()"
+          on-close-finished="closeFinished()">
+          {{value}}
+        </bts-slidey>
+      `)(scope);
+      controller = component.controller('btsSlidey');
+      scope.$digest();
+    }));
+
+    it('should support defaulting to opened', () => {
+      expect(controller.opened).to.equal(true);
+      expect(component.attr('class').split(' ').indexOf('opened')).not.to.equal(-1);
+    });
+  });
+
   describe('binding(onClose)', () => {
     beforeEach(angular.mock.inject(($compile, $rootScope) => {
       scope.opened = true;
