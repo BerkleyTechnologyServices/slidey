@@ -101,6 +101,30 @@ describe('component(slidey)', () => {
     });
   });
 
+  describe('binding(opened)', () => {
+    beforeEach(angular.mock.inject(($compile, $rootScope) => {
+      scope = $rootScope.$new();
+      scope.opened = true;
+
+      component = $compile(`
+        <bts-slidey
+          opened="opened"
+          content-width="{{contentWidth}}"
+          on-close="closed()"
+          on-close-finished="closeFinished()">
+          {{value}}
+        </bts-slidey>
+      `)(scope);
+      controller = component.controller('btsSlidey');
+      scope.$digest();
+    }));
+
+    it('should support defaulting to opened', () => {
+      expect(controller.opened).to.equal(true);
+      expect(component.attr('class').split(' ').indexOf('opened')).not.to.equal(-1);
+    });
+  });
+
   describe('binding(onClose)', () => {
     beforeEach(angular.mock.inject(($compile, $rootScope) => {
       scope.opened = true;
@@ -271,6 +295,9 @@ describe('component(slidey)', () => {
             <div style="height: 600px;">Some Content</div>
             <bts-slidey opened="nestedOpened">
               <div style="height: 200px;">Some Content</div>
+              <bts-slidey opened="superNestedOpened">
+                <div style="height: 500px;">Some Content</div>
+              </bts-slidey>
             </bts-slidey>
           </bts-slidey>
           <bts-slidey>Test2</bts-slidey>
@@ -287,6 +314,7 @@ describe('component(slidey)', () => {
       controller = component.controller('btsSlidey');
       scope.opened = false;
       scope.nestedOpened = false;
+      scope.superNestedOpened = false;
       scope.reflowContainer = 'modal';
       scope.$digest();
     }));
@@ -489,6 +517,52 @@ describe('component(slidey)', () => {
         expect(modal.offsetHeight).to.equal(800);
         expect(modal.style.height).to.equal('800px');
         newChild.classList.add('test');
+        setTimeout(() => {
+          expect(modal.offsetHeight).to.equal(1000);
+          expect(modal.style.height).to.equal('1000px');
+          done();
+        });
+      });
+    });
+
+    it('should support closing multiple slideys at once', () => {
+      scope.opened = true;
+      scope.nestedOpened = true;
+      scope.superNestedOpened = true;
+      scope.$digest();
+
+      expect(modal.offsetHeight).to.equal(500);
+      expect(modal.style.height).to.equal('500px');
+
+      scope.nestedOpened = false;
+      scope.superNestedOpened = false;
+      scope.$digest();
+
+      expect(modal.offsetHeight).to.equal(600);
+      expect(modal.style.height).to.equal('600px');
+    });
+
+    it('should detect content changes after being nested', (done) => {
+      scope.opened = true;
+      scope.nestedOpened = true;
+      scope.$digest();
+
+      expect(modal.offsetHeight).to.equal(400);
+      expect(modal.style.height).to.equal('400px');
+
+      scope.nestedOpened = false;
+      scope.$digest();
+
+      const newChild = document.createElement('div');
+      newChild.style.height = '200px';
+      controller._content.appendChild(newChild);
+
+      // NOTE: This tests the content MutationObserver, therefore we need
+      // to wait for the next event loop, setTimeout accomplishes this
+      setTimeout(() => {
+        expect(modal.offsetHeight).to.equal(800);
+        expect(modal.style.height).to.equal('800px');
+        newChild.style.height = '400px';
         setTimeout(() => {
           expect(modal.offsetHeight).to.equal(1000);
           expect(modal.style.height).to.equal('1000px');

@@ -5,8 +5,8 @@ export default class SlideyController {
   }
 
   $onInit() {
-    this.opened = false;
-    this.contentWidth = '80%';
+    this.contentWidth = this.contentWidth || '80%';
+    this.opened = this.opened || false;
     this.$scope.$watch('$ctrl.opened', this._onOpenedChanged.bind(this));
   }
 
@@ -14,11 +14,13 @@ export default class SlideyController {
     this._wrapper = this.$element[0].querySelector('.slidey-content-wrapper');
     this._content = this.$element[0].querySelector('.slidey-content');
     this._overlay = this.$element[0].querySelector('.slidey-overlay');
-    this.setNested(this._nested);
     this._wrapper.addEventListener('transitionend', this._onTransitionEnd.bind(this), {
       passive: true
     });
+    this.setNested(this._nested);
+    this.adjustContainer();
   }
+
 
   $onChanges(changes) {
     if (changes.contentWidth) {
@@ -80,6 +82,7 @@ export default class SlideyController {
     } else {
       this._wrapper.style.width = this.contentWidth;
       this.$element.removeClass('nested');
+      this.adjustContainer();
     }
   }
 
@@ -87,7 +90,7 @@ export default class SlideyController {
     if (!window.MutationObserver) {
       throw new Error('Unfortunately, this browser doesn\'t support the MutationObserver API!');
     }
-    if (!this._container) {
+    if (!this._container || !this._wrapper) {
       return;
     }
     this._containerObserver && this._containerObserver.disconnect();
@@ -112,9 +115,8 @@ export default class SlideyController {
       this._container.style.height = this.contentHeight;
       this._container.style.height = this.contentHeight;
     } else if (this.parentSlidey && this.parentSlidey.opened) {
-      // We're closing to a parent slidey, so we should match its height.
       this._container.style.height = this.parentSlidey.contentHeight;
-    } else {
+    } else if (!this.parentSlidey) {
       // We need to watch the container for changes to cover instances
       // where we have async calls or are waiting for angular to bind
       this._containerObserver = new MutationObserver((mutations) => {

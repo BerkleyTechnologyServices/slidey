@@ -69,12 +69,12 @@
     "phantomjs-prebuilt": "^2.1.14",
     "publish-latest": "^1.1.2",
     "raw-loader": "^0.5.1",
-    "semantic-release": "^7.0.1",
+    "semantic-release": "^8.0.0",
     "sinon": "^3.0.0",
     "validate-commit-msg": "^2.11.1",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.3.0",
-    "yargs": "^8.0.1"
+    "yargs": "^9.0.1"
   },
   "jspm": {
     "peerDependencies": {
