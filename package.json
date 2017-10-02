@@ -68,7 +68,7 @@
     "mocha": "^3.2.0",
     "phantomjs-prebuilt": "^2.1.14",
     "publish-latest": "^1.1.2",
-    "raw-loader": "^0.5.1",
+    "raw-loader": "^1.0.0-beta.0",
     "semantic-release": "^8.0.0",
     "sinon": "^4.0.0",
     "validate-commit-msg": "^2.11.1",
