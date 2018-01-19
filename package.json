@@ -31,7 +31,8 @@
     "build:prod": "webpack --progress --colors -p",
     "report-coverage": "coveralls < coverage/lcov.info",
     "publish-latest": "publish-latest --user-email berkley-bot@users.noreply.github.com --user-name berkley-bot",
-    "semantic-release": "semantic-release pre && npm run build && npm publish && npm run publish-latest && semantic-release post"
+    "semantic-release": "semantic-release pre && npm run build && npm publish && npm run publish-latest && semantic-release post",
+    "precommit": "remove-lockfiles"
   },
   "license": "Apache 2.0",
   "peerDependencies": {
@@ -69,6 +70,7 @@
     "phantomjs-prebuilt": "^2.1.14",
     "publish-latest": "^1.1.2",
     "raw-loader": "^0.5.1",
+    "remove-lockfiles": "^2.0.0",
     "semantic-release": "^8.0.0",
     "sinon": "^4.0.0",
     "validate-commit-msg": "^2.11.1",
