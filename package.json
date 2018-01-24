@@ -76,7 +76,7 @@
     "validate-commit-msg": "^2.11.1",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.3.0",
-    "yargs": "^10.0.3"
+    "yargs": "^11.0.0"
   },
   "jspm": {
     "peerDependencies": {
