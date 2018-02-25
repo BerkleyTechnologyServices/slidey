@@ -68,7 +68,7 @@
     "sinon": "^4.0.0",
     "validate-commit-msg": "^2.11.1",
     "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.3.0",
+    "webpack-dev-server": "^3.0.0",
     "yargs": "^11.0.0"
   },
   "jspm": {
