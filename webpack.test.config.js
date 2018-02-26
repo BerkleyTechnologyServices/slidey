@@ -4,11 +4,6 @@ module.exports = {
   },
   module: {
     rules: [{
-      enforce: 'pre',
-      test: /\.js$/,
-      include: /tests/,
-      loader: 'eslint-loader'
-    }, {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
@@ -22,5 +17,8 @@ module.exports = {
       loader: 'raw-loader'
     }]
   },
-  devtool: 'inline-source-map'
+  devtool: 'inline-source-map',
+  optimization: {
+    minimize: false
+  }
 };
