@@ -2,9 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const deindent = require('deindent');
 const packageJson = require('./package.json');
-const args = require('yargs').argv;
+const { argv: args } = require('yargs');
 
-const isProd = args.p;
+const isProd = args.mode === 'production';
 
 module.exports = {
   context: path.join(__dirname, 'src'),
@@ -19,17 +19,12 @@ module.exports = {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
-  externals: [{
-    angular: 'angular'
-  }],
+  externals: {
+    'angular': 'angular'
+  },
   devtool: 'source-map',
   module: {
     rules: [{
-      enforce: 'pre',
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'eslint-loader'
-    }, {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
@@ -43,27 +38,21 @@ module.exports = {
       loader: 'raw-loader'
     }]
   },
+  optimization: {
+    minimize: isProd ? true : false
+  },
   plugins: [
     new webpack.BannerPlugin({
-      banner: getBanner(),
+      banner: deindent(`
+        /**
+         * ${packageJson.name} JavaScript Library v${packageJson.version}
+         *
+         * @license Apache 2.0 (https://github.com/BerkleyTechnologyServices/slidey/blob/master/LICENSE)
+         *
+         * Made with ♥ by ${packageJson.contributors.join(', ')}
+         */
+      `).trim(),
       raw: true
     })
   ]
 };
-
-function getBanner() {
-  if (isProd) {
-    return deindent(`
-      /*! ${packageJson.name} v${packageJson.version} | Apache 2.0 | Made with ♥ by ${packageJson.contributors.join(', ')} */
-    `).trim();
-  }
-  return deindent(`
-    /**
-     * ${packageJson.name} JavaScript Library v${packageJson.version}
-     *
-     * @license Apache 2.0 (https://github.com/BerkleyTechnologyServices/slidey/blob/master/LICENSE)
-     *
-     * Made with ♥ by ${packageJson.contributors.join(', ')}
-     */
-  `).trim();
-}
