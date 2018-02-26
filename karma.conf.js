@@ -3,9 +3,9 @@ webpackConfig.module.rules.push({
   enforce: 'pre',
   test: /\.js$/,
   exclude: /tests|node_modules/,
-  loader: 'istanbul-instrumenter-loader',
-  options: {
-    esModules: true
+  use: {
+    loader: 'istanbul-instrumenter-loader',
+    options: { esModules: true }
   }
 });
 
@@ -29,7 +29,8 @@ module.exports = function(config) {
     webpack: webpackConfig,
 
     webpackMiddleware: {
-      noInfo: true
+      noInfo: true,
+      stats: 'errors-only'
     },
 
     reporters: ['mocha', 'coverage'],
@@ -42,6 +43,10 @@ module.exports = function(config) {
       ]
     },
 
+    mochaReporter: {
+      showDiff: true
+    },
+
     port: 9876,
 
     colors: true,
@@ -50,7 +55,7 @@ module.exports = function(config) {
 
     autoWatch: true,
 
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeHeadless'],
 
     browserNoActivityTimeout: 120000,
 

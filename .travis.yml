@@ -1,9 +1,7 @@
+sudo: required
 language: node_js
 node_js: stable
-dist: trusty
-sudo: false
 cache:
-  yarn: true
   directories:
     - node_modules
 branches:
@@ -11,11 +9,11 @@ branches:
     - master
     - /^greenkeeper/.*$/
 script:
-  - yarn start lint
+  - npm start lint
   - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then yarn start test.sauce; fi
-  - yarn start test
+  - npm start test
 after_success:
-  - yarn start report-coverage
-  - yarn start semantic-release
+  - npm start report-coverage
+  - npm start semantic-release
 notifications:
   email: change

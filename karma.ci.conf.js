@@ -68,10 +68,15 @@ module.exports = function(config) {
     webpack: webpackConfig,
 
     webpackMiddleware: {
-      noInfo: true
+      noInfo: true,
+      stats: 'errors-only'
     },
 
-    reporters: ['mocha'],
+    reporters: ['mocha', 'saucelabs'],
+
+    mochaReporter: {
+      showDiff: true
+    },
 
     port: 9876,
 
@@ -85,15 +90,13 @@ module.exports = function(config) {
       startConnect: true
     },
 
+    customLaunchers: customLaunchers,
+    browsers: Object.keys(customLaunchers),
     captureTimeout: 0,
     browserNoActivityTimeout: 120000,
 
     singleRun: true
   };
-
-  karmaConfig.customLaunchers = customLaunchers;
-  karmaConfig.browsers = Object.keys(customLaunchers);
-  karmaConfig.reporters.push('saucelabs');
 
   config.set(karmaConfig);
 };
