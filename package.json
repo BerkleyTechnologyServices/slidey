@@ -63,7 +63,7 @@
     "publish-latest": "^1.1.2",
     "raw-loader": "^1.0.0-beta.0",
     "remove-lockfiles": "^2.0.0",
-    "semantic-release": "^12.0.0",
+    "semantic-release": "^15.0.0",
     "sinon": "^4.0.0",
     "validate-commit-msg": "^2.11.1",
     "webpack": "^4.0.0",
