@@ -11,6 +11,16 @@
 
 Registers filter components allowing for a single input and output!
 
+## Supported Browsers
+
+_If a version isn't specified that means we test on the latest and greatest, however most versions of that browser should work._
+
+- Chrome
+- Firefox
+- Safari 8+
+- Edge
+- IE 11
+
 ## Install
 
 You can install this package either with `npm` or with `bower`.
