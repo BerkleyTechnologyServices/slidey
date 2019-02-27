@@ -37,7 +37,7 @@
     "angular-mocks": "^1.7.7",
     "babel-loader": "^8.0.5",
     "chai": "^4.0.1",
-    "coveralls": "3.0.1",
+    "coveralls": "^3.0.1",
     "cz-conventional-changelog": "^2.0.0",
     "deindent": "^0.1.0",
     "eslint": "^5.13.0",
