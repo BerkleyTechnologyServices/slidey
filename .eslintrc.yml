@@ -3,6 +3,7 @@ globals:
   angular: true
 parserOptions:
   sourceType: module
+  ecmaVersion: 2015
 rules:
   comma-dangle:
     - error
