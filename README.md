@@ -5,7 +5,6 @@
 [![Travis][travis-ci-image]][travis-ci-url]
 [![Coveralls][coveralls-image]][coveralls-url]
 
-[![Commitizen friendly][commitizen-image]][commitizen-url]
 [![semantic-release][semantic-release-image]][semantic-release-url]
 [![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 
@@ -156,9 +155,6 @@ Fires off when the closing animation finishes.
 
 [coveralls-image]: https://img.shields.io/coveralls/BerkleyTechnologyServices/slidey/master.svg
 [coveralls-url]: https://coveralls.io/github/BerkleyTechnologyServices/slidey
-
-[commitizen-image]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
-[commitizen-url]: http://commitizen.github.io/cz-cli/
 
 [semantic-release-url]: https://github.com/semantic-release/semantic-release
 [semantic-release-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg

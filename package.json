@@ -21,8 +21,7 @@
     "url": "https://github.com/BerkleyTechnologyServices/slidey.git"
   },
   "scripts": {
-    "start": "nps",
-    "pre-commit": "remove-lockfiles"
+    "start": "nps"
   },
   "license": "Apache-2.0",
   "peerDependencies": {
@@ -38,24 +37,23 @@
     "babel-loader": "^8.0.5",
     "chai": "^4.0.1",
     "coveralls": "^3.0.1",
-    "cz-conventional-changelog": "^2.0.0",
     "deindent": "^0.1.0",
-    "eslint": "^5.13.0",
-    "eslint-config-google": "^0.13.0",
-    "eslint-plugin-mocha": "^5.2.1",
+    "eslint": "^6.0.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-mocha": "^6.0.0",
     "html-loader": "^0.5.0",
-    "husky": "^2.0.0",
+    "husky": "^3.0.0",
     "istanbul-instrumenter-loader": "^3.0.0",
     "karma": "^4.0.0",
-    "karma-chrome-launcher": "^2.1.0",
-    "karma-coverage": "^1.1.1",
+    "karma-chrome-launcher": "^3.0.0",
+    "karma-coverage": "^2.0.0",
     "karma-firefox-launcher": "^1.0.1",
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.3",
     "karma-sauce-launcher": "^2.0.0",
     "karma-sinon": "^1.0.5",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^3.0.0",
+    "karma-webpack": "^4.0.0",
     "mocha": "^6.0.0",
     "nps": "^5.7.1",
     "raw-loader": "^3.0.0",
@@ -66,19 +64,19 @@
     "webpack": "^4.29.1",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14",
-    "yargs": "^13.1.0"
+    "yargs": "^14.0.0"
   },
   "jspm": {
     "peerDependencies": {
       "angular": "*"
     }
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "publishConfig": {
     "access": "public"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "remove-lockfiles"
+    }
   }
 }
