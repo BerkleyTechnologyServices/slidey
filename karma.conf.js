@@ -15,7 +15,8 @@ module.exports = function(config) {
 
     frameworks: [
       'mocha',
-      'sinon'
+      'sinon',
+      'webpack'
     ],
 
     files: [
