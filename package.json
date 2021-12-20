@@ -40,7 +40,7 @@
     "deindent": "^0.1.0",
     "eslint": "^7.0.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-mocha": "^9.0.0",
+    "eslint-plugin-mocha": "^10.0.3",
     "html-loader": "^2.1.1",
     "husky": "^7.0.0",
     "istanbul-instrumenter-loader": "^3.0.0",
